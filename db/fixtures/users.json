@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Arno",
+    "email": "arno@codaisseur.com",
+    "password": "123abc"
+  },
+  {
+    "name": "Matt",
+    "email": "matt@codaisseur.com",
+    "password": "123abc"
+  },
+  {
+    "name": "Mike",
+    "email": "mike@codaisseur.com",
+    "password": "123abc"
+  },
+  {
+    "name": "Wouter",
+    "email": "wouter@codaisseur.com",
+    "password": "123abc"
+  },
+  {
+    "name": "Bram",
+    "email": "bram@codaisseur.com",
+    "password": "123abc"
+  },
+  {
+    "name": "Arien",
+    "email": "arien@codaisseur.com",
+    "password": "123abc"
+  }
+]
