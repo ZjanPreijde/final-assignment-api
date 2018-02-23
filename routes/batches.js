@@ -9,29 +9,20 @@ const checkBatch = require('../lib/checkBatch')
 
 module.exports = io => {
   router
-    .get('/batches', (req, res, next) => {
+    .get('/batches', authenticate, (req, res, next) => {
       Batch.find()
-        // Newest batches first
         .sort({ createdAt: -1 })
-        // Send the data in JSON format
         .then((batches) => res.json(batches))
-        // Throw a default 500 error if something goes wrong
-        .catch((error) => next(error))
-    })
-    // TODO?: Also return students?
-    .get('/batches/:batchId', (req, res, next) => {
-      const batchId = req.params.batchId
-      Batch.findById(batchId)
-        .then((batch) => {
-          if (!batch) { return next() }
-          const students = {}
-          res.json(batch, students)
-        })
         .catch((error) => next(error))
     })
     .post('/batches', authenticate, (req, res, next) => {
       // Validation in checkBatch
-      const newBatch = checkBatch(batch, req.body)
+      // let batch = { req.body.name, req.body.startsAt, req.body.startsAt }
+      // const newBatch = checkBatch({}, req.body)
+      const newBatch = { name: req.body.name,
+        startsAt: new Date(req.body.startsAt),
+        newEndsAt: new Date(req.body.endsAt) }
+      console.log(newBatch)
 
       Batch.create(newBatch)
         .then((batch) => {
@@ -39,6 +30,17 @@ module.exports = io => {
             type: 'BATCH_CREATED',
             payload: batch
           })
+          res.json(batch)
+        })
+        .catch((error) => next(error))
+    }) // End .post
+    // TODO?: Also return students?
+    .get('/batches/:id', (req, res, next) => {
+      const batchId = req.params.id
+      Batch.findById(batchId)
+        .then((batch) => {
+          if (!batch) { return next() }
+          // const students = {}
           res.json(batch)
         })
         .catch((error) => next(error))

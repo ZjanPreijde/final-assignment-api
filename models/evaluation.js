@@ -9,6 +9,7 @@ const evaluationSchema = new Schema({
   userId:    { type: Schema.Types.ObjectId, ref: 'users' },
   batchId:   { type: Schema.Types.ObjectId, ref: 'batches' },
   studentId: { type: Schema.Types.ObjectId, ref: 'students' },
+  scoreDate: { type: Date}
   score:     { type: Number, enum: [ 'red', 'yellow', 'green' ] },
   remarks:   { type: String, default: "" },
   createdAt: { type: Date, default: Date.now },

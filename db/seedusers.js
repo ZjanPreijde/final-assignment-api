@@ -4,7 +4,6 @@ const passport = require('../config/auth')
 const jwtOptions = require('../config/jwt')
 
 const { User } = require('../models')
-
 const users = require('./fixtures/users.json')
 
 for (let user of users) {

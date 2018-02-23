@@ -9,6 +9,7 @@ const { Schema } = mongoose
 
 const batchSchema = new Schema({
   // students:  [studentSchema],
+  name:      { type: String },
   startsAt:  { type: Date },
   endsAt:    { type: Date },
   createdAt: { type: Date, default: Date.now },

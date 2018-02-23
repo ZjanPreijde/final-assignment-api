@@ -6,6 +6,8 @@
   "license": "MIT",
   "scripts": {
     "seedusers": "node db/seedusers.js",
+    "seedbatches": "node db/seedbatches.js",
+    "seedstudents": "node db/seedstudents.js",
     "start": "node .",
     "dev": "nodemon --inspect ."
   },
